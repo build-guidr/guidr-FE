@@ -20,6 +20,25 @@ axios.defaults.baseURL =
   process.env.API_URL || "https://ls-guidr.herokuapp.com/api/";
 
 class App extends Component {
+
+  constructor() {
+    super(); 
+    this.state = {
+      userData: []
+    };
+  }
+
+  componentDidMount() {
+    axios 
+    .get('https://ls-guidr.herokuapp.com/api/')
+    .then(result => {
+      this.setState({ user: result.data });
+    })
+    .catch(error => console.log(`unable to load Data`));
+}
+
+ 
+
   render() {
     return (
       <div className="App">
