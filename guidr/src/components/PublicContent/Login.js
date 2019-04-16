@@ -11,20 +11,6 @@ class Login extends Component {
     };
   }
 
-  //   handleChange = e => {
-  //     this.setState({
-  //       credentials: {
-  //         ...this.state.credentials,
-  //         [e.target.name]: e.target.value
-  //       }
-  //     });
-  //   };
-
-  //   login = e => {
-  //     e.preventDefault();
-  //     this.props.login(this.state.credentials);
-  //   };
-
   handleLogin = event => {
     event.preventDefault();
 
@@ -33,8 +19,8 @@ class Login extends Component {
       .post(endpoint, this.state)
       .then(res => {
         console.log("LOGIN RESPONSE", res);
-        localStorage.setItem("token", res.data.token);
-        this.props.history.push("/my-portfolio");
+        localStorage.setItem("token", res.data.password);
+        this.props.history.push("/my-trips");
       })
       .catch(error => {
         console.error("LOGIN ERROR", error);
@@ -42,7 +28,6 @@ class Login extends Component {
   };
 
   handleInputChange = e => {
-    // const { id, value } = event.target;
     this.setState({
       ...this.state,
       [e.target.name]: e.target.value
