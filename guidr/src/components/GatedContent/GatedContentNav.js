@@ -17,6 +17,8 @@ function GatedContentNav() {
         &nbsp;|&nbsp;
         <NavLink to="/my-portfolio">My Portfolio</NavLink>
         &nbsp;|&nbsp;
+        <NavLink to="/add-trip">Add a Trip</NavLink>
+        &nbsp;|&nbsp;
         <button onClick={logout}>Logout</button>
       </nav>
     </div>

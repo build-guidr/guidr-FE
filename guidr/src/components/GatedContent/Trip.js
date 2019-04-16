@@ -8,9 +8,9 @@ export default class Trip extends Component {
     super();
     this.state = {
       trips: [],
-      activeTrip: {}
+      activeTrip: {},
+      trip: {}
     };
-    console.log(this);
   }
 
   componentDidMount() {
@@ -18,7 +18,12 @@ export default class Trip extends Component {
     axios
       .get(endpoint)
       .then(res => {
-        this.setState({ trips: res.data });
+        this.setState({
+          trips: res.data,
+          trip: res.data.find(
+            trip => `${trip.id}` === this.props.match.params.id
+          )
+        });
       })
       .catch(error => {
         console.error("USERS ERROR", error);
@@ -42,35 +47,60 @@ export default class Trip extends Component {
       });
   };
 
+  deleteTrips = id => {
+    return axios
+      .delete(`https://ls-guidr.herokuapp.com/api/trips/${id}`)
+      .then(res => {
+        const trips = res.data;
+        this.setState({ trips });
+        this.props.history.push("/my-trips");
+        // console.log(res);
+        // redirect
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  setActiveTrip = trip => {
+    this.setState({ activeTrip: trip });
+  };
+
+  updateTrip = e => {
+    e.preventDefault();
+    this.setActiveTrip(this.state.trip);
+    this.props.history.push(`/edit-trip/${this.trip.id}`);
+  };
+
+  deleteTrip = e => {
+    e.preventDefault();
+    this.deleteTrips(this.state.trip.id);
+  };
+
   render() {
-    console.log("All mah trips: ", this.state.trips);
-    this.trip = this.state.trips.find(
-      trip => `${trip.id}` === this.props.match.params.id
-    );
-    if (!this.trip) return <h3>Loading data...</h3>;
+    // console.log("All mah trips: ", this.state.trips);
+    if (!this.state.trip) return <h3>Loading data...</h3>;
 
-    console.log(this.trip);
-    this.setActiveTrip = trip => {
-      this.setState({ activeTrip: trip });
-    };
-
-    this.updateTrip = e => {
-      e.preventDefault();
-      this.setActiveTrip(this.trip);
-      this.props.history.push(`/edit-trip/${this.trip.id}`);
-    };
+    console.log(this.state.trip);
     return (
       <div>
         <div>
           <GatedContentNav />
         </div>
-        <h1>{this.trip.title}</h1>
+        <h1>{this.state.trip.title}</h1>
         <div>
-          <p>{this.trip.description}</p>
-          <p>{this.trip.date}</p>
-          <p>{this.trip.duration}</p>
-          <p>{this.trip.location}</p>
+          <p>{this.state.trip.description}</p>
+          <p>
+            Trip Type:{" "}
+            {`${
+              this.state.trip.professional === 1 ? "Private" : "Professional"
+            }`}
+          </p>
+          <p>{this.state.trip.date}</p>
+          <p>{this.state.trip.duration}</p>
+          <p>{this.state.trip.location}</p>
           <button onClick={this.updateTrip}>Update Trip</button>
+          <button onClick={this.deleteTrip}>Delete Trip</button>
         </div>
       </div>
     );
