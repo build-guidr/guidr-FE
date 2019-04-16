@@ -1,0 +1,7 @@
+.tab {
+  color: green;
+}
+
+.tab.active-tab {
+  font-weight: bold;
+}

@@ -18,6 +18,7 @@ import Login from "./components/PublicContent/Login";
 import Signup from "./components/PublicContent/Signup";
 import Portfolio from "./components/GatedContent/Portfolio";
 import EditTripForm from "./components/GatedContent/EditTripForm";
+import AddTripForm from "./components/GatedContent/AddTripForm";
 
 axios.defaults.baseURL =
   process.env.API_URL || "https://ls-guidr.herokuapp.com/api/";
@@ -33,6 +34,7 @@ class App extends Component {
             <PrivateRoute path="/my-trips" component={Trips} />
             <PrivateRoute path="/my-portfolio" component={Portfolio} />
             <PrivateRoute path="/edit-trip/:id" component={EditTripForm} />
+            <PrivateRoute path="/add-trip" component={AddTripForm} />
             <PrivateRoute path="/trips/:id" component={Trip} />
           </Switch>
         </div>

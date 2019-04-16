@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import axios from "axios";
+import GatedContentNav from "./GatedContentNav";
 
 class EditTripForm extends Component {
-  state = {
-    trips: [],
-    activeTrip: {}
-  };
+  constructor() {
+    super();
+    this.state = {
+      trips: [],
+      activeTrip: {},
+      private: 1,
+      professional: 0
+    };
+  }
 
   componentDidMount() {
     const endpoint = "https://ls-guidr.herokuapp.com/api/trips";
@@ -62,47 +68,59 @@ class EditTripForm extends Component {
 
   render() {
     if (!this.state.activeTrip) return <h3>Loading data...</h3>;
-
     return (
-      <div className="form-container">
-        <h2>Edit Trip</h2>
-        <form className="form" onSubmit={this.onSubmitEditedTrip}>
-          <input
-            name="title"
-            placeholder="title"
-            onChange={this.handleChange}
-            value={this.state.activeTrip.title}
-          />
-          <input
-            type="text"
-            name="description"
-            placeholder="trip description"
-            onChange={this.handleChange}
-            value={this.state.activeTrip.description}
-          />
-          <input
-            type="text"
-            name="location"
-            placeholder="trip location"
-            onChange={this.handleChange}
-            value={this.state.activeTrip.location}
-          />
-          <input
-            type="text"
-            name="duration"
-            placeholder="trip duration"
-            onChange={this.handleChange}
-            value={this.state.activeTrip.duration}
-          />
-          <input
-            type="date"
-            name="date"
-            placeholder="trip date"
-            onChange={this.handleChange}
-            value={this.state.activeTrip.date}
-          />
-          <button type="submit">Update</button>
-        </form>
+      <div>
+        <div>
+          <GatedContentNav />
+        </div>
+        <div className="form-container">
+          <h2>Edit Trip</h2>
+          <form className="form" onSubmit={this.onSubmitEditedTrip}>
+            <input
+              name="title"
+              placeholder="title"
+              onChange={this.handleChange}
+              value={this.state.activeTrip.title}
+            />
+            <input
+              type="text"
+              name="description"
+              placeholder="trip description"
+              onChange={this.handleChange}
+              value={this.state.activeTrip.description}
+            />
+            <input
+              type="text"
+              name="location"
+              placeholder="trip location"
+              onChange={this.handleChange}
+              value={this.state.activeTrip.location}
+            />
+            <input
+              type="text"
+              name="duration"
+              placeholder="trip duration"
+              onChange={this.handleChange}
+              value={this.state.activeTrip.duration}
+            />
+            <input
+              type="text"
+              name="date"
+              placeholder="trip date"
+              onChange={this.handleChange}
+              value={this.state.activeTrip.date}
+            />
+            <select
+              name="professional"
+              value={this.state.activeTrip.professional}
+              onChange={this.handleChange}
+            >
+              <option value={this.state.private}>Private</option>
+              <option value={this.state.professional}>Professional</option>
+            </select>
+            <button>Update</button>
+          </form>
+        </div>
       </div>
     );
   }
