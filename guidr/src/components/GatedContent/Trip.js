@@ -69,7 +69,7 @@ export default class Trip extends Component {
   updateTrip = e => {
     e.preventDefault();
     this.setActiveTrip(this.state.trip);
-    this.props.history.push(`/edit-trip/${this.trip.id}`);
+    this.props.history.push(`/edit-trip/${this.state.trip.id}`);
   };
 
   deleteTrip = e => {
