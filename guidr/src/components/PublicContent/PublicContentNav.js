@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
@@ -8,7 +8,7 @@ function PublicContentNav() {
       <nav>
         <NavLink to="/">Home</NavLink>
         &nbsp;|&nbsp;
-        <NavLink to="/signup">SignUp</NavLink>
+        <NavLink to="/signup">Create an Account</NavLink>
         &nbsp;|&nbsp;
         <NavLink to="/">Login</NavLink>
         &nbsp;|&nbsp;

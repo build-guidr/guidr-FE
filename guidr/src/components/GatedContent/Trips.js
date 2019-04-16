@@ -11,10 +11,11 @@ class Trips extends Component {
     this.state = {
       trips: []
     };
+    console.log(this);
   }
 
   componentDidMount() {
-    const endpoint = "/users";
+    const endpoint = "https://ls-guidr.herokuapp.com/api/trips";
     axios
       .get(endpoint)
       .then(res => {
@@ -32,11 +33,17 @@ class Trips extends Component {
           <GatedContentNav />
         </div>
         <h1>My Trips</h1>
-        {/* <div>
+        <div>
           {this.state.trips.map(trip => (
-            <p key={trip.id}>{trip.trip_name}</p>
+            <div key={trip.id}>
+              <p>{trip.title}</p>
+              <p>{trip.description}</p>
+              <Link to={`/trips/${trip.id}`}>
+                <p>Details</p>
+              </Link>
+            </div>
           ))}
-        </div> */}
+        </div>
       </div>
     );
   }
