@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, withRouter } from "react-router-dom";
 
 function GatedContentNav() {
   const logout = e => {
@@ -13,7 +13,7 @@ function GatedContentNav() {
       <h2 className="nav-brand-name">GuidR</h2>
       <nav className="gated-content-nav">
         <NavLink to="/my-portfolio">PORTFOLIO</NavLink>
-        <NavLink to="/my-trips">TRIPS</NavLink>
+        <NavLink to="/my-trips/2">TRIPS</NavLink>
         <NavLink to="/add-trip">ADD TRIP</NavLink>
         <NavLink exact to="/" onClick={logout}>
           LOGOUT
