@@ -32,16 +32,30 @@ class AddProfile extends Component {
 
   addUser = newProfile => {
     axios
-      .post("https://ls-guidr.herokuapp.com/api/profile", newProfile)
+      .put("https://ls-guidr.herokuapp.com/api/profile/id", newProfile)
       .then(result => {
         this.setState({user: result.data });
         // redirect
-        this.props.history.push("/my-portfolio");
+        // this.props.history.push("/my-portfolio");
       })
-      .catch(error => {
+      .catch(error => {   
         console.log(error);
       });
   };
+  
+//   updateUser = updatedUser => {
+//     axios
+//       .put(`https://ls-guidr.herokuapp.com/api/profile/${updatedUser.id}`, updatedUser)
+//       .then(res => {
+//         this.setState({ user: res.data });
+//         console.log(res);
+//         // redirect
+//         this.props.history.push("/my-portfolio");
+//       })
+//       .catch(err => {
+//         console.log(err);
+//       });
+//   };
 
   handleChange = event => {
     event.persist();
@@ -55,7 +69,7 @@ class AddProfile extends Component {
 
   onSubmitAddUser = event => {
     event.preventDefault();
-    this.props.addUser(this.state.user);
+    this.addUser(this.state.user);
 
     this.setState({
         user: {
@@ -79,10 +93,10 @@ class AddProfile extends Component {
           <h2>Add Profile</h2>
           <form className="form" onSubmit={this.onSubmitAddUser}>
             <input
-              name="username"
+              name="first_name"
               placeholder="username"
               onChange={this.handleChange}
-              value={this.state.user.username}
+              value={this.state.user.first_name}
             />
             <input
               type="text"
