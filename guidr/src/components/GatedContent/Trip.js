@@ -14,7 +14,7 @@ export default class Trip extends Component {
   }
 
   componentDidMount() {
-    const endpoint = "https://ls-guidr.herokuapp.com/api/trips";
+    const endpoint = "https://ls-guidr.herokuapp.com/api/trips/";
     axios
       .get(endpoint)
       .then(res => {
@@ -83,24 +83,26 @@ export default class Trip extends Component {
 
     console.log(this.state.trip);
     return (
-      <div>
+      <div className="trip-main-container">
         <div>
           <GatedContentNav />
         </div>
-        <h1>{this.state.trip.title}</h1>
-        <div>
-          <p>{this.state.trip.description}</p>
-          <p>
-            Trip Type:{" "}
-            {`${
-              this.state.trip.professional === 1 ? "Private" : "Professional"
-            }`}
-          </p>
-          <p>{this.state.trip.date}</p>
-          <p>{this.state.trip.duration}</p>
-          <p>{this.state.trip.location}</p>
-          <button onClick={this.updateTrip}>Update Trip</button>
-          <button onClick={this.deleteTrip}>Delete Trip</button>
+        <div className="trip-content-container">
+          <h1>{this.state.trip.title}</h1>
+          <div>
+            <p>{this.state.trip.description}</p>
+            <p>
+              Trip Type:
+              {` ${
+                this.state.trip.professional === 1 ? "Private" : "Professional"
+              }`}
+            </p>
+            <p>Date Embarked: {this.state.trip.date}</p>
+            <p>Duration: {this.state.trip.duration}</p>
+            <p>Location: {this.state.trip.location}</p>
+            <button onClick={this.updateTrip}>Update Trip</button>
+            <button onClick={this.deleteTrip}>Delete Trip</button>
+          </div>
         </div>
       </div>
     );

@@ -152,3 +152,19 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.create-account-link-text {
+  font-size: 1.6rem;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.create-account-link-text a {
+  color: #2f454e;
+  font-weight: bold;
+}
+
+.create-account-link-text a:hover {
+  text-decoration: none;
+  color: #1d92b8;
+}
