@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import PublicContentNav from "./PublicContentNav";
+import "./PublicContent.css";
 
 export default class Signup extends Component {
   state = {
@@ -10,35 +11,26 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div className="public-content-main-container">
+        <div className="public-content-nav-container">
           <PublicContentNav />
         </div>
-        <form onSubmit={this.handleSignup}>
-          <div>
-            <label htmlFor="username" />
-            <input
-              value={this.state.username}
-              onChange={this.handleInputChange}
-              id="username"
-              type="text"
-              placeholder="Username"
-            />
-          </div>
-          <div>
-            <label htmlFor="password" />
-            <input
-              value={this.state.password}
-              onChange={this.handleInputChange}
-              id="password"
-              type="password"
-              placeholder="Password"
-            />
-          </div>
-
-          <div>
-            <button type="submit">Register</button>
-          </div>
+        <form onSubmit={this.handleSignup} className="signup-form">
+          <input
+            value={this.state.username}
+            onChange={this.handleInputChange}
+            id="username"
+            type="text"
+            placeholder="Username"
+          />
+          <input
+            value={this.state.password}
+            onChange={this.handleInputChange}
+            id="password"
+            type="password"
+            placeholder="Password"
+          />
+          <button type="submit">Register</button>
         </form>
       </div>
     );

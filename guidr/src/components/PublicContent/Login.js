@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import PublicContentNav from "./PublicContentNav";
+import "./PublicContent.css";
 
 class Login extends Component {
   constructor(props) {
@@ -36,11 +37,11 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div className="public-content-main-container">
+        <div className="public-content-nav-container">
           <PublicContentNav />
         </div>
-        <form onSubmit={this.handleLogin}>
+        <form onSubmit={this.handleLogin} className="login-form">
           <input
             type="text"
             name="username"
