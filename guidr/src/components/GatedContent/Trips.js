@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import GatedContentNav from "./GatedContentNav";
 import "./GatedContent.css";
+import { Button } from "reactstrap";
 
 class Trips extends Component {
   constructor() {
@@ -35,11 +36,11 @@ class Trips extends Component {
   }
 
   componentDidMount() {
-    const endpoint = "https://ls-guidr.herokuapp.com/api/trips";
     axios
-      .get(endpoint)
+      .get("https://ls-guidr.herokuapp.com/api/trips")
       .then(res => {
         const trips = res.data;
+        console.log("Res", res.data);
         this.setState({
           allTrips: trips,
           trips
@@ -66,16 +67,17 @@ class Trips extends Component {
   };
 
   render() {
+    if (!this.state.trips) return <button>Add your first trip!</button>;
     return (
-      <div>
+      <div className="trips-main-container">
         <div>
           <GatedContentNav />
         </div>
         <h1>My Trips</h1>
-        <div>
+        <div className="tabs">
           {this.tabs.map(tab => {
             return (
-              <button
+              <Button
                 key={tab.key}
                 className={`tab${
                   this.state.activeTab === tab.key ? " active-tab" : ""
@@ -83,17 +85,17 @@ class Trips extends Component {
                 onClick={e => this.updateFilter(e, tab)}
               >
                 {tab.label}
-              </button>
+              </Button>
             );
           })}
         </div>
-        <div>
+        <div className="trips-content-container">
           {this.state.trips.map(trip => (
-            <div key={trip.id}>
-              <p>{trip.title}</p>
+            <div className="trip-content-module" key={trip.id}>
+              <h2>{trip.title}</h2>
               <p>{trip.description}</p>
               <Link to={`/trips/${trip.id}`}>
-                <p>Details</p>
+                <Button size="md">Details</Button>
               </Link>
             </div>
           ))}

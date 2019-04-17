@@ -3,6 +3,7 @@ import axios from "axios";
 import PublicContentNav from "./PublicContentNav";
 import "./PublicContent.css";
 import { Button } from "reactstrap";
+import { Link } from "react-router-dom";
 
 export default class Signup extends Component {
   state = {
@@ -35,6 +36,14 @@ export default class Signup extends Component {
             <Button variant="primary" size="lg">
               CREATE ACCOUNT
             </Button>
+            <div className="create-account-link-text">
+              <p>
+                Already have an account?{" "}
+                <Link exact to="/">
+                  Login
+                </Link>
+              </p>
+            </div>
           </form>
         </div>
       </div>

@@ -84,11 +84,11 @@ class AddTripForm extends Component {
     if (!this.state.trip) return <h3>Loading data...</h3>;
     console.log(this.state);
     return (
-      <div>
+      <div className="add-trip-main-container">
         <div>
           <GatedContentNav />
         </div>
-        <div className="form-container">
+        <div className="trip-form-container">
           <h2>Add Trip</h2>
           <form className="form" onSubmit={this.onSubmitAddTrip}>
             <input
