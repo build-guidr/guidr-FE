@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import PublicContentNav from "./PublicContentNav";
 import "./PublicContent.css";
+import { Button } from "reactstrap";
 
 class Login extends Component {
   constructor(props) {
@@ -41,21 +42,27 @@ class Login extends Component {
         <div className="public-content-nav-container">
           <PublicContentNav />
         </div>
-        <form onSubmit={this.handleLogin} className="login-form">
-          <input
-            type="text"
-            name="username"
-            value={this.state.username}
-            onChange={this.handleInputChange}
-          />
-          <input
-            type="password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-          />
-          <button>Log in</button>
-        </form>
+        <div className="form-container">
+          <form onSubmit={this.handleLogin} className="form-field-section">
+            <input
+              type="text"
+              name="username"
+              placeholder="USERNAME"
+              value={this.state.username}
+              onChange={this.handleInputChange}
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="PASSWORD"
+              value={this.state.password}
+              onChange={this.handleInputChange}
+            />
+            <Button variant="primary" size="lg">
+              LOG IN
+            </Button>
+          </form>
+        </div>
       </div>
     );
   }
