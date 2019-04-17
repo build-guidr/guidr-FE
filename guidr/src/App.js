@@ -4,7 +4,8 @@ import {
   Route,
   Link,
   NavLink,
-  Switch
+  Switch,
+  withRouter
 } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import axios from "axios";
@@ -30,7 +31,7 @@ class App extends Component {
         <Switch>
           <Route path="/signup" render={props => <Signup {...props} />} />
           <Route exact path="/" render={props => <Login {...props} />} />
-          <PrivateRoute path="/my-trips" component={Trips} />
+          <PrivateRoute path="/my-trips/:id" component={Trips} />
           <PrivateRoute path="/my-portfolio" component={Portfolio} />
           <PrivateRoute path="/edit-trip/:id" component={EditTripForm} />
           <PrivateRoute path="/add-trip" component={AddTripForm} />
@@ -41,4 +42,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

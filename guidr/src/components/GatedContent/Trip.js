@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import GatedContentNav from "./GatedContentNav";
+import Footer from "./Footer";
+import "./GatedContent.css";
+import { Button } from "reactstrap";
 
 export default class Trip extends Component {
   constructor() {
@@ -29,23 +32,6 @@ export default class Trip extends Component {
         console.error("USERS ERROR", error);
       });
   }
-
-  updateTrip = updatedTrip => {
-    axios
-      .put(
-        `https://ls-guidr.herokuapp.com/api/trips/${updatedTrip.id}`,
-        updatedTrip
-      )
-      .then(res => {
-        this.setState({ trips: res.data });
-        console.log(res);
-        // redirect
-        this.props.history.push(`/trips/${updatedTrip.id}`);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
 
   deleteTrips = id => {
     return axios
@@ -83,27 +69,38 @@ export default class Trip extends Component {
 
     console.log(this.state.trip);
     return (
-      <div className="trip-main-container">
-        <div>
+      <div className="main">
+        <div className="trip-main-container">
           <GatedContentNav />
-        </div>
-        <div className="trip-content-container">
-          <h1>{this.state.trip.title}</h1>
-          <div>
-            <p>{this.state.trip.description}</p>
-            <p>
-              Trip Type:
-              {` ${
-                this.state.trip.professional === 1 ? "Private" : "Professional"
-              }`}
-            </p>
-            <p>Date Embarked: {this.state.trip.date}</p>
-            <p>Duration: {this.state.trip.duration}</p>
-            <p>Location: {this.state.trip.location}</p>
-            <button onClick={this.updateTrip}>Update Trip</button>
-            <button onClick={this.deleteTrip}>Delete Trip</button>
+          <div className="trip-card">
+            <div className="trip-content-container">
+              <div className="title-ctas">
+                <h1>{this.state.trip.title}</h1>
+                <button onClick={this.updateTrip}>Edit Trip</button>
+                <button onClick={this.deleteTrip}>Delete Trip</button>
+              </div>
+              <div>
+                <div className="trip-details">
+                  <div className="mini-details">
+                    <p>Date Embarked: {this.state.trip.date}</p>
+                    <p>Duration: {this.state.trip.duration}</p>
+                    <p>Location: {this.state.trip.location}</p>
+                  </div>
+                  <p>{this.state.trip.description}</p>
+                  <p>
+                    Trip Type:
+                    {` ${
+                      this.state.trip.professional === 1
+                        ? "Private"
+                        : "Professional"
+                    }`}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

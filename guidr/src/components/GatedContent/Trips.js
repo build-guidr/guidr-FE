@@ -4,6 +4,7 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import GatedContentNav from "./GatedContentNav";
+import Footer from "./Footer";
 import "./GatedContent.css";
 import { Button } from "reactstrap";
 
@@ -37,7 +38,9 @@ class Trips extends Component {
 
   componentDidMount() {
     axios
-      .get("https://ls-guidr.herokuapp.com/api/trips")
+      .get(
+        `https://ls-guidr.herokuapp.com/api/trips/${this.props.match.params.id}`
+      )
       .then(res => {
         const trips = res.data;
         console.log("Res", res.data);
@@ -69,37 +72,40 @@ class Trips extends Component {
   render() {
     if (!this.state.trips) return <button>Add your first trip!</button>;
     return (
-      <div className="trips-main-container">
-        <div>
+      <div className="main">
+        <div className="trips-main-container">
           <GatedContentNav />
-        </div>
-        <h1>My Trips</h1>
-        <div className="tabs">
-          {this.tabs.map(tab => {
-            return (
-              <Button
-                key={tab.key}
-                className={`tab${
-                  this.state.activeTab === tab.key ? " active-tab" : ""
-                }`}
-                onClick={e => this.updateFilter(e, tab)}
-              >
-                {tab.label}
-              </Button>
-            );
-          })}
-        </div>
-        <div className="trips-content-container">
-          {this.state.trips.map(trip => (
-            <div className="trip-content-module" key={trip.id}>
-              <h2>{trip.title}</h2>
-              <p>{trip.description}</p>
-              <Link to={`/trips/${trip.id}`}>
-                <Button size="md">Details</Button>
-              </Link>
+          <section className="content-box">
+            <h1>My Trips</h1>
+            <div className="tabs">
+              {this.tabs.map(tab => {
+                return (
+                  <button
+                    key={tab.key}
+                    className={`tab${
+                      this.state.activeTab === tab.key ? " active-tab" : ""
+                    }`}
+                    onClick={e => this.updateFilter(e, tab)}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
             </div>
-          ))}
+            <div className="trips-content-container">
+              {this.state.trips.map(trip => (
+                <div className="trip-content-module" key={trip.id}>
+                  <h2>{trip.title}</h2>
+                  <p>{trip.description}</p>
+                  <Link to={`/trips/${trip.id}`}>
+                    <Button size="md">Details</Button>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
+        <Footer />
       </div>
     );
   }
