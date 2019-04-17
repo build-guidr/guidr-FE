@@ -1,19 +1,22 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { createBrowserHistory } from "history";
+import "./PublicContent.css";
 
 function PublicContentNav() {
   return (
-    <div>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        &nbsp;|&nbsp;
-        <NavLink to="/signup">Create an Account</NavLink>
-        &nbsp;|&nbsp;
-        <NavLink to="/">Login</NavLink>
-        &nbsp;|&nbsp;
+    <div className="public-content-header-container">
+      <nav className="public-content-nav">
+        <NavLink className="nav-link" to="/">
+          Home
+        </NavLink>
+        <NavLink className="nav-link" to="/signup">
+          Create an Account
+        </NavLink>
+        <NavLink className="nav-link" to="/">
+          Login
+        </NavLink>
       </nav>
-      <header>
+      <header className="public-content-header-text">
         <h1>Guidr</h1>
         <h3>Your personalized outdoor outfitter portfolio</h3>
       </header>

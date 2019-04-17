@@ -27,17 +27,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div>
-          <Switch>
-            <Route path="/signup" render={props => <Signup {...props} />} />
-            <Route exact path="/" render={props => <Login {...props} />} />
-            <PrivateRoute path="/my-trips" component={Trips} />
-            <PrivateRoute path="/my-portfolio" component={Portfolio} />
-            <PrivateRoute path="/edit-trip/:id" component={EditTripForm} />
-            <PrivateRoute path="/add-trip" component={AddTripForm} />
-            <PrivateRoute path="/trips/:id" component={Trip} />
-          </Switch>
-        </div>
+        <Switch>
+          <Route path="/signup" render={props => <Signup {...props} />} />
+          <Route exact path="/" render={props => <Login {...props} />} />
+          <PrivateRoute path="/my-trips" component={Trips} />
+          <PrivateRoute path="/my-portfolio" component={Portfolio} />
+          <PrivateRoute path="/edit-trip/:id" component={EditTripForm} />
+          <PrivateRoute path="/add-trip" component={AddTripForm} />
+          <PrivateRoute path="/trips/:id" component={Trip} />
+        </Switch>
       </div>
     );
   }
