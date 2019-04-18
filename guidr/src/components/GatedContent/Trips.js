@@ -40,7 +40,9 @@ class Trips extends Component {
 
   componentDidMount() {
     axios
-      .get("https://ls-guidr.herokuapp.com/api/trips/")
+      .get(
+        `https://ls-guidr.herokuapp.com/api/trips/${this.props.match.params.id}`
+      )
       .then(res => {
         const trips = res.data;
         console.log("Res", res.data);
@@ -71,7 +73,31 @@ class Trips extends Component {
 
   render() {
     AOS.init();
-    if (!this.state.trips) return <button>Add your first trip!</button>;
+    if (!this.state.trips.length)
+      return (
+        <div className="main">
+          <div className="trips-main-container">
+            <GatedContentNav />
+            <section
+              className="content-box"
+              data-aos="fade-in"
+              data-aos-anchor-placement="top-center"
+              data-aos-duration="900"
+            >
+              <h1>My Trips</h1>
+              <div className="trips-content-container">
+                <div className="get-started-content">
+                  <p>Add your first trip to your GuidR portfolio</p>
+                  <Button size="lg">
+                    <Link to="/add-trip">GET STARTED</Link>
+                  </Button>
+                </div>
+              </div>
+            </section>
+          </div>
+          <Footer />
+        </div>
+      );
     return (
       <div className="main">
         <div className="trips-main-container">

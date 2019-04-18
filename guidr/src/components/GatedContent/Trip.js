@@ -43,7 +43,8 @@ export default class Trip extends Component {
       .then(res => {
         const trips = res.data;
         this.setState({ trips });
-        this.props.history.push("/my-trips");
+
+        this.props.history.push(`/my-trips/${this.state.trip.user_id}`);
         // console.log(res);
         // redirect
       })
@@ -110,7 +111,7 @@ export default class Trip extends Component {
                   </p>
                 </div>
               </div>
-              <Link to="/my-trips">
+              <Link to={`/my-trips/${localStorage.getItem("user_id")}`}>
                 <Button className="back-cta" variant="secondary" size="lg">
                   BACK TO MY TRIPS
                 </Button>

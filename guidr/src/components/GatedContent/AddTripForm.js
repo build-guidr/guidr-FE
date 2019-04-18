@@ -12,7 +12,7 @@ class AddTripForm extends Component {
     this.state = {
       trips: [],
       trip: {
-        user_id: "",
+        user_id: localStorage.getItem("user_id"),
         title: "",
         description: "",
         adventure_type: "",
@@ -34,7 +34,7 @@ class AddTripForm extends Component {
       .then(res => {
         this.setState({
           trips: res.data,
-          user_id: res.data[0].user_id
+          user_id: localStorage.getItem("user_id")
         });
       })
       .catch(error => {
@@ -46,13 +46,12 @@ class AddTripForm extends Component {
     axios
       .post("https://ls-guidr.herokuapp.com/api/trips/", newTrip)
       .then(res => {
-        console.log("printing res");
-        console.log("Trips", res.data);
+        // redirect
+        const trips = res.data;
         this.setState({
           trips: res.data
         });
-        // redirect
-        this.props.history.push("/my-trips");
+        return this.props.history.push(`/my-trips/${this.state.user_id}`);
       })
       .catch(err => {
         console.log(err);
@@ -82,7 +81,7 @@ class AddTripForm extends Component {
     this.setState({
       trips: [...this.state.trips, trip]
     });
-    this.props.history.push("/my-trips");
+    this.props.history.push(`/my-trips/${this.state.user_id}`);
   };
 
   render() {

@@ -10,12 +10,14 @@ function GatedContentNav() {
 
   return (
     <div className="gated-content-header-container">
-      <NavLink to="/my-trips">
+      <NavLink to={`/my-trips/${localStorage.getItem("user_id")}`}>
         <h2 className="nav-brand-name">GuidR</h2>
       </NavLink>
       <nav className="gated-content-nav">
         <NavLink to="/my-portfolio">PORTFOLIO</NavLink>
-        <NavLink to="/my-trips">TRIPS</NavLink>
+        <NavLink to={`/my-trips/${localStorage.getItem("user_id")}`}>
+          TRIPS
+        </NavLink>
         <NavLink to="/add-trip">ADD TRIP</NavLink>
         <NavLink exact to="/" onClick={logout}>
           LOGOUT

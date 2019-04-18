@@ -28,6 +28,46 @@
 
 /* Tab/filter styling on Trips.js */
 
+.get-started-content {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.get-started-content p {
+  font-size: 2.6rem;
+}
+
+.get-started-content button {
+  width: 80%;
+  margin-top: 2rem;
+  padding: 2rem 3rem 2rem 3rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  background: #a2cd5f;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+}
+
+.get-started-content button a {
+  color: white;
+}
+
+.get-started-content button:hover {
+  background: #a2cd5f;
+  color: white;
+  border: 0;
+  box-shadow: 2px 2px 6px rgba(162, 205, 95, 0.803);
+}
+
+.get-started-content button a:hover {
+  color: white;
+  text-decoration: none;
+}
+
 .tabs {
   display: flex;
   flex-direction: row;
@@ -100,6 +140,12 @@ button.tab:focus {
   padding: 1rem 4rem 1rem 4rem;
   border: none;
   font-size: 1.6rem;
+}
+
+.trip-content-module button:hover {
+  background: #a2cd5f;
+  font-weight: bold;
+  box-shadow: 2px 2px 8px rgba(67, 67, 67, 0.4);
 }
 /* Styling for Trip.js (Individual Trip pages) */
 
@@ -190,7 +236,7 @@ button.tab:focus {
 }
 
 .trip-details {
-  border: 1.5px solid #a2cd5f;
+  border: 3px solid #a2cd5f;
   padding: 3rem;
   border-radius: 15px;
   margin-bottom: 4rem;
@@ -209,9 +255,10 @@ button.tab:focus {
 button.back-cta {
   padding: 1rem 3rem 1rem 3rem;
   font-size: 1.4rem;
-  color: #767676;
-  background: #d0d1d1;
+  background: #2f454e;
+  color: white;
   border: none;
+  border-radius: 5px;
 }
 
 button.back-cta:hover {
@@ -293,9 +340,11 @@ button.back-cta:hover {
 }
 
 .trip-form-container h1 {
-  font-size: 3.5rem;
+  font-size: 4rem;
   text-align: center;
   margin-top: 3rem;
+  position: relative;
+  color: white;
 }
 
 .trip-form {
@@ -318,9 +367,9 @@ button.back-cta:hover {
   width: 40%;
   text-align: center;
   justify-content: center;
-  font-size: 1.4rem;
-  color: #767676;
-  background: #d0d1d1;
+  font-size: 1.6rem;
+  color: white;
+  background: #a2cd5f;
   border: none;
   margin-top: 2rem;
   border-radius: 8px;
@@ -329,6 +378,7 @@ button.back-cta:hover {
 .trip-form button:hover {
   color: white;
   background: #a2cd5f;
+  box-shadow: 2px 2px 10px rgba(67, 67, 67, 0.6);
   border: none;
   font-weight: bold;
 }
@@ -341,20 +391,31 @@ button.back-cta:hover {
   margin-top: 2rem;
 }
 
+.form-group label {
+  margin-top: 2.5rem;
+}
+
 .form-group input {
   width: 60%;
   margin-top: 1rem;
-  border-radius: 8px;
+  border-radius: 3px;
   border: 0;
-  border-bottom: 2px solid #6d6d6d;
+  color: #6d6d6d;
+  border-bottom: 1px solid #2f444e;
 }
 
 .form-group input:focus {
   outline: 0;
 }
 
+[class*="MuiTooltip-tooltip"] {
+  font-size: 1.5rem !important;
+  background: #6d6d6d;
+}
+
 .form-group select {
   background: white;
+  margin-top: 1rem;
   width: 50%;
   height: 50px;
 }
