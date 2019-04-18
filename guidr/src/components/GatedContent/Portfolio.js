@@ -42,16 +42,16 @@ export default class Portfolio extends Component {
     axios
       .delete(`https://ls-guidr.herokuapp.com/api/profile/${id}`)
       .then(result => {console.log("DELETE AXIOS",result.data)
-          this.setState({user: result.data}); 
+          this.setState({ user: result.data }); 
         })
       .catch(error => console.log(error))
   }
 
-  // deleteProfile = () => {
-  //   // event.preventDefault(); 
-  //   console.log("DELETE HERE",this.state.user.id)
-  //   this.deleteUser(this.state.user.id);
-  // };
+  deleteProfile = () => {
+    // event.preventDefault(); 
+    console.log("DELETE HERE",this.state.user.id)
+    this.deleteUser(this.state);
+  };
 
   // updateProfile = event => {
   //   event.preventDefault(); console.log("EDIT HERE",this.user.id)

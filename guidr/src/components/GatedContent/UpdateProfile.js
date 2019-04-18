@@ -10,8 +10,6 @@ class UpdateProfile extends Component {
     };
   }
 
-
-
   componentDidMount() {
    this.getUser()
   }
