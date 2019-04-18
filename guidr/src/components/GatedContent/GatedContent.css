@@ -255,7 +255,7 @@ button.back-cta:hover {
   width: 40%;
 }
 
-/* Styling for Add Trip Form Page (AddTripForm.js) */
+/* Styling for Add Trip Form Page (AddTripForm.js) and Edit Trip Form (EditTripForm.js) */
 
 .add-trip-main-container {
   display: flex;
