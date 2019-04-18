@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import GatedContentNav from "./GatedContentNav";
+import "./GatedContent.css";
 
 class UpdateProfile extends Component {
   constructor() {
@@ -9,6 +9,7 @@ class UpdateProfile extends Component {
      
     };
   }
+
 
   componentDidMount() {
    this.getUser()
@@ -34,7 +35,7 @@ class UpdateProfile extends Component {
 
   updateUser = updatedUser => {
     console.log("hey",updatedUser);
-   const id = this.state.id
+   const id = this.state.user_id
     axios
       .put( 
         `https://ls-guidr.herokuapp.com/api/profile/${id}`,
@@ -48,7 +49,7 @@ class UpdateProfile extends Component {
         console.log("success!");
 
         // redirect
-        // this.props.history.push(`/profile/`);
+        this.props.history.push(`/profile/${id}`);
       })
       .catch(err => {
         this.getUser()
@@ -68,8 +69,8 @@ class UpdateProfile extends Component {
 
   render() {
     return (
-      <div>
-        <div className="form-container">
+      <div className="main">
+         <div className="trips-main-container">
           <h2>Update Profile</h2>
           <form className="form" onSubmit={this.onSubmitEditedUser}>
           <input

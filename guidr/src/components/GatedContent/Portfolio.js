@@ -41,7 +41,7 @@ export default class Portfolio extends Component {
   deleteUser = id => {
     axios
       .delete(`https://ls-guidr.herokuapp.com/api/profile/${id}`)
-      .then(result => {console.log("DELETE AXIOS",result.data)
+      .then(result => {console.log("DELETE AXIOS", result.data)
           this.setState({ user: result.data }); 
         })
       .catch(error => console.log(error))
@@ -50,7 +50,7 @@ export default class Portfolio extends Component {
   deleteProfile = () => {
     // event.preventDefault(); 
     console.log("DELETE HERE",this.state.user.id)
-    this.deleteUser(this.state);
+    this.deleteUser(this.state.user.id);
   };
 
   // updateProfile = event => {
@@ -61,12 +61,14 @@ export default class Portfolio extends Component {
   
   render() {
     return (
-      <div>
-        <div>
+      <div className="main">
+         <div className="trips-main-container">
           <GatedContentNav />
         </div>
+        <section className="content-box" data-aos="fade-in">
         <h1>Portfolio</h1>
-        <div>
+        
+        <div className="tabs">
           {this.state.user.map(user => (
             <div key={user.id}>
               <p> <strong>Guidr:</strong> {user.first_name} {user.last_name}</p>
@@ -78,12 +80,16 @@ export default class Portfolio extends Component {
               <button onClick={this.deleteProfile}>Delete Profile</button>
               <Route render={props => <UpdateProfile {...props} updateUser={this.updateUser}/>} />
               {/* <Route render={props => <AddProfile {...props} addUser={this.addUser}/>} /> */}
-              <Link to={`/portfolio/${user.id}`}>
+              {/* <Route path={this.props.UpdateProfile} component={UpdateProfile} /> */}
+              <Link to={this.props.UpdateProfile} onClick={() => UpdateProfile(user.user_id)}>
+              {console.log("WHAT",`/my-portfolio/updatedUser/${user.user_id}`)}
+              {/* NOT LINK TO INDIVIDUAL ID WHY???!!!!! */}
                 <p>Details</p>
               </Link>
             </div>
           ))}
         </div>
+        </section>
       </div>
     );
   }
