@@ -71,7 +71,9 @@ class UpdateProfile extends Component {
     return (
       <div className="main">
          <div className="trips-main-container">
+         <section data-aos="fade-in">
           <h2>Update Profile</h2>
+          <div className="tabs">
           <form className="form" onSubmit={this.onSubmitEditedUser}>
           <input
               name="first_name"
@@ -115,7 +117,10 @@ class UpdateProfile extends Component {
             />
            <button onClick={this.updateProfile}>Update Profile</button>
           </form>
+          </div>
+        </section>
         </div>
+       
       </div>
     );
   }
