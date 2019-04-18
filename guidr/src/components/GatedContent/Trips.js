@@ -76,7 +76,12 @@ class Trips extends Component {
       <div className="main">
         <div className="trips-main-container">
           <GatedContentNav />
-          <section className="content-box" data-aos="fade-in">
+          <section
+            className="content-box"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-center"
+            data-aos-duration="900"
+          >
             <h1>My Trips</h1>
             <div className="tabs">
               {this.tabs.map(tab => {
@@ -98,9 +103,9 @@ class Trips extends Component {
                 <div
                   className="trip-content-module"
                   key={trip.id}
-                  data-aos="fade-up"
-                  data-aos-anchor-placement="top-center"
-                  data-aos-duration="900"
+                  // data-aos="fade-up"
+                  // data-aos-anchor-placement="top-center"
+                  // data-aos-duration="900"
                 >
                   <h2>{trip.title}</h2>
                   <p>{trip.description}</p>
