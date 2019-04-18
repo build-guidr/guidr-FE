@@ -49,6 +49,25 @@ export default class Signup extends Component {
     );
   }
 
+  // handleSignup = event => {
+  //   event.preventDefault();
+
+  //   const register = {
+  //     username: this.state.username,
+  //     password: this.state.password
+  //   };
+
+  //   const endpoint = "https://ls-guidr.herokuapp.com/api/auth/register";
+  //   axios
+  //     .post(endpoint, register)
+  //     .then(res => {
+  //       this.props.history.push("/");
+  //     })
+  //     .catch(error => {
+  //       console.error("REGISTER ERROR", error);
+  //     });
+  // };
+
   handleSignup = event => {
     event.preventDefault();
 
@@ -61,7 +80,14 @@ export default class Signup extends Component {
     axios
       .post(endpoint, register)
       .then(res => {
-        this.props.history.push("/");
+        axios
+          .post("https://ls-guidr.herokuapp.com/api/auth/login", this.state)
+          .then(res => {
+            console.log("LOGIN RESPONSE", res);
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("user_id", res.data.id);
+            this.props.history.push(`/my-trips/${res.data.id}`);
+          });
       })
       .catch(error => {
         console.error("REGISTER ERROR", error);

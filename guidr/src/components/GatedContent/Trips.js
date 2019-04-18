@@ -90,18 +90,18 @@ class Trips extends Component {
                   <div className="get-started-sub-container">
                     <div className="get-started-background" />
                     <div className="get-started-sub-container-content">
-                      <p>
-                        Welcome to GuidR! Here's a few things you can do to get
-                        started:{" "}
-                      </p>
+                      <p>Welcome to GuidR! </p>
                       <ul>
                         <div className="get-started-choices">
-                          <li>Add your first trip to your GuidR portfolio</li>
+                          <li>
+                            Add your first trip to your GuidR account to get
+                            started
+                          </li>
                           <Button size="lg">
                             <Link to="/add-trip">ADD YOUR FIRST TRIP</Link>
                           </Button>
                         </div>
-                        <div className="get-started-choices">
+                        {/* <div className="get-started-choices">
                           <li>
                             Start building your profile to showcase you killer
                             skills!
@@ -109,7 +109,7 @@ class Trips extends Component {
                           <Button size="lg">
                             <Link to="/my-portfolio">BUILD YOUR PORTFOLIO</Link>
                           </Button>
-                        </div>
+                        </div> */}
                       </ul>
                     </div>
                   </div>

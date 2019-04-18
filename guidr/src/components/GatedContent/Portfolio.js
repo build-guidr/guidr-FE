@@ -47,6 +47,12 @@ export default class Portfolio extends Component {
   };
 
   render() {
+    if (!this.state.user)
+      return (
+        <p>
+          Start by adding your first <Link to="/add-trip">trip</Link>
+        </p>
+      );
     return (
       <div className="main">
         <div className="trips-main-container">
@@ -54,8 +60,7 @@ export default class Portfolio extends Component {
         </div>
         <section>
           <h1>Portfolio</h1>
-
-          <p>{this.state.user.first_name}</p>
+          <p>{this.state.user.id}</p>
         </section>
       </div>
     );
