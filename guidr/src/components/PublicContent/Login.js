@@ -4,6 +4,8 @@ import PublicContentNav from "./PublicContentNav";
 import "./PublicContent.css";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 class Login extends Component {
   constructor(props) {
@@ -23,7 +25,7 @@ class Login extends Component {
       .then(res => {
         console.log("LOGIN RESPONSE", res);
         localStorage.setItem("token", res.data.token);
-        this.props.history.push("/my-portfolio");
+        this.props.history.push("/my-trips/2");
       })
       .catch(error => {
         console.error("LOGIN ERROR", error);
@@ -38,13 +40,23 @@ class Login extends Component {
   };
 
   render() {
+    AOS.init();
     return (
       <div className="public-content-main-container">
-        <div className="public-content-nav-container">
+        <div
+          className="public-content-nav-container"
+          data-aos="fade-down-right"
+          data-aos-duration="600"
+        >
           <PublicContentNav />
         </div>
-        <div className="form-container">
+        <div
+          className="form-container"
+          data-aos="fade-down-left"
+          data-aos-duration="600"
+        >
           <form onSubmit={this.handleLogin} className="form-field-section">
+            <h2>LOGIN</h2>
             <input
               type="text"
               name="username"

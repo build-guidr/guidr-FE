@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import GatedContentNav from "./GatedContentNav";
 import Footer from "./Footer";
 import "./GatedContent.css";
+import Edit from "./img/edit-icon.png";
+import Delete from "./img/delete-icon.png";
 import { Button } from "reactstrap";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default class Trip extends Component {
   constructor() {
@@ -64,6 +68,7 @@ export default class Trip extends Component {
   };
 
   render() {
+    AOS.init();
     // console.log("All mah trips: ", this.state.trips);
     if (!this.state.trip) return <h3>Loading data...</h3>;
 
@@ -72,12 +77,20 @@ export default class Trip extends Component {
       <div className="main">
         <div className="trip-main-container">
           <GatedContentNav />
-          <div className="trip-card">
+          <div className="trip-card" data-aos="fade-in">
             <div className="trip-content-container">
               <div className="title-ctas">
                 <h1>{this.state.trip.title}</h1>
-                <button onClick={this.updateTrip}>Edit Trip</button>
-                <button onClick={this.deleteTrip}>Delete Trip</button>
+                <div onClick={this.updateTrip} className="edit-icon-container">
+                  <img src={Edit} alt="edit icon" /> <p> Edit Trip</p>
+                </div>
+                <div
+                  onClick={this.deleteTrip}
+                  className="delete-icon-container"
+                >
+                  <img src={Delete} alt="edit icon" />
+                  <p> Delete Trip</p>
+                </div>
               </div>
               <div>
                 <div className="trip-details">
@@ -97,6 +110,11 @@ export default class Trip extends Component {
                   </p>
                 </div>
               </div>
+              <Link to="/my-trips/2">
+                <Button className="back-cta" variant="secondary" size="lg">
+                  BACK TO MY TRIPS
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
