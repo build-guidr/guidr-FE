@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import GatedContentNav from "./GatedContentNav";
+import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import Tooltip from "@material-ui/core/Tooltip";
 
 class AddTripForm extends Component {
   constructor() {
@@ -84,64 +86,94 @@ class AddTripForm extends Component {
     if (!this.state.trip) return <h3>Loading data...</h3>;
     console.log(this.state);
     return (
-      <div className="add-trip-main-container">
-        <div>
+      <div className="main">
+        <div className="add-trip-main-container">
           <GatedContentNav />
-        </div>
-        <div className="trip-form-container">
-          <h2>Add Trip</h2>
-          <form className="form" onSubmit={this.onSubmitAddTrip}>
-            <input
-              name="title"
-              placeholder="title"
-              onChange={this.handleChange}
-              value={this.state.trip.title}
-            />
-            <input
-              type="text"
-              name="description"
-              placeholder="trip description"
-              onChange={this.handleChange}
-              value={this.state.trip.description}
-            />
-            <input
-              type="text"
-              name="adventure_type"
-              placeholder="adventure type"
-              onChange={this.handleChange}
-              value={this.state.trip.adventure_type}
-            />
-            <input
-              type="text"
-              name="location"
-              placeholder="trip location"
-              onChange={this.handleChange}
-              value={this.state.trip.location}
-            />
-            <input
-              type="text"
-              name="duration"
-              placeholder="trip duration"
-              onChange={this.handleChange}
-              value={this.state.trip.duration}
-            />
-            <input
-              type="text"
-              name="date"
-              placeholder="trip date"
-              onChange={this.handleChange}
-              value={this.state.trip.date}
-            />
-            <select
-              name="professional"
-              value={this.state.trip.professional}
-              onChange={this.handleChange}
-            >
-              <option value={this.state.private}>Private</option>
-              <option value={this.state.professional}>Professional</option>
-            </select>
-            <button>Update</button>
-          </form>
+          <div className="trip-form-container">
+            <h1>Add Trip</h1>
+            <form className="trip-form" onSubmit={this.onSubmitAddTrip}>
+              <FormGroup className="form-group">
+                <Label for="tripTitle">TITLE</Label>
+                <input
+                  name="title"
+                  placeholder="Title"
+                  id="tripTitle"
+                  onChange={this.handleChange}
+                  value={this.state.trip.title}
+                />
+              </FormGroup>
+              <FormGroup className="form-group">
+                <Tooltip title="Delete" placement="left-start">
+                  <Label for="tripDescription">DESCRIPTION</Label>
+                </Tooltip>
+                <input
+                  type="text"
+                  name="description"
+                  id="tripDescription"
+                  placeholder="Description"
+                  onChange={this.handleChange}
+                  value={this.state.trip.description}
+                />
+              </FormGroup>
+              <FormGroup className="form-group">
+                <Label for="tripAdventureType">ADVENTURE TYPE</Label>
+                <input
+                  type="text"
+                  name="adventure_type"
+                  id="tripAdventureType"
+                  placeholder="Adventure Type"
+                  onChange={this.handleChange}
+                  value={this.state.trip.adventure_type}
+                />
+              </FormGroup>
+              <FormGroup className="form-group">
+                <Label for="tripLocation">LOCATION</Label>
+                <input
+                  type="text"
+                  name="location"
+                  id="tripLocation"
+                  placeholder="Location"
+                  onChange={this.handleChange}
+                  value={this.state.trip.location}
+                />
+              </FormGroup>
+              <FormGroup className="form-group">
+                <Label for="tripDuration">DURATION (ie 7 days)</Label>
+                <input
+                  type="text"
+                  name="duration"
+                  id="tripDuration"
+                  placeholder="Duration"
+                  onChange={this.handleChange}
+                  value={this.state.trip.duration}
+                />
+              </FormGroup>
+              <FormGroup className="form-group">
+                <Label for="tripDate">DATE (ie April 15 2019)</Label>
+                <input
+                  type="text"
+                  name="date"
+                  id="tripDate"
+                  placeholder="Date"
+                  onChange={this.handleChange}
+                  value={this.state.trip.date}
+                />
+              </FormGroup>
+              <FormGroup className="form-group">
+                <Label for="tripType">Trip Type</Label>
+                <select
+                  name="professional"
+                  value={this.state.trip.professional}
+                  onChange={this.handleChange}
+                  id="tripType"
+                >
+                  <option value={this.state.private}>Private</option>
+                  <option value={this.state.professional}>Professional</option>
+                </select>
+              </FormGroup>
+              <Button>ADD TRIP</Button>
+            </form>
+          </div>
         </div>
       </div>
     );

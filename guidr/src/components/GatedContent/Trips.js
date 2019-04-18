@@ -7,6 +7,8 @@ import GatedContentNav from "./GatedContentNav";
 import Footer from "./Footer";
 import "./GatedContent.css";
 import { Button } from "reactstrap";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 class Trips extends Component {
   constructor() {
@@ -70,12 +72,13 @@ class Trips extends Component {
   };
 
   render() {
+    AOS.init();
     if (!this.state.trips) return <button>Add your first trip!</button>;
     return (
       <div className="main">
         <div className="trips-main-container">
           <GatedContentNav />
-          <section className="content-box">
+          <section className="content-box" data-aos="fade-in">
             <h1>My Trips</h1>
             <div className="tabs">
               {this.tabs.map(tab => {
@@ -94,11 +97,17 @@ class Trips extends Component {
             </div>
             <div className="trips-content-container">
               {this.state.trips.map(trip => (
-                <div className="trip-content-module" key={trip.id}>
+                <div
+                  className="trip-content-module"
+                  key={trip.id}
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="top-center"
+                  data-aos-duration="900"
+                >
                   <h2>{trip.title}</h2>
                   <p>{trip.description}</p>
                   <Link to={`/trips/${trip.id}`}>
-                    <Button size="md">Details</Button>
+                    <Button size="md">DETAILS</Button>
                   </Link>
                 </div>
               ))}

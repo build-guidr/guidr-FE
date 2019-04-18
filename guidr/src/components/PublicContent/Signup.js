@@ -19,6 +19,7 @@ export default class Signup extends Component {
         </div>
         <div className="form-container">
           <form onSubmit={this.handleSignup} className="form-field-section">
+            <h2>SIGNUP</h2>
             <input
               value={this.state.username}
               onChange={this.handleInputChange}
