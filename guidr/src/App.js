@@ -25,6 +25,7 @@ axios.defaults.baseURL =
   process.env.API_URL || "https://ls-guidr.herokuapp.com/api/";
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
