@@ -103,14 +103,14 @@ export default class Trip extends Component {
                   <p>
                     Trip Type:
                     {` ${
-                      this.state.trip.professional === 1
-                        ? "Private"
-                        : "Professional"
+                      this.state.trip.professional === true
+                        ? "Professional"
+                        : "Private"
                     }`}
                   </p>
                 </div>
               </div>
-              <Link to="/my-trips/2">
+              <Link to="/my-trips">
                 <Button className="back-cta" variant="secondary" size="lg">
                   BACK TO MY TRIPS
                 </Button>

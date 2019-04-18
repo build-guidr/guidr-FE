@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
 import GatedContentNav from "./GatedContentNav";
+import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import Tooltip from "@material-ui/core/Tooltip";
+import TooltipIcon from "./img/tooltip-icon.png";
+import { NavLink, Link } from "react-router-dom";
+import Footer from "./Footer";
 
 class EditTripForm extends Component {
   constructor() {
@@ -8,8 +13,7 @@ class EditTripForm extends Component {
     this.state = {
       trips: [],
       activeTrip: {},
-      private: 1,
-      professional: 0
+      professional: true
     };
   }
 
@@ -69,58 +73,121 @@ class EditTripForm extends Component {
   render() {
     if (!this.state.activeTrip) return <h3>Loading data...</h3>;
     return (
-      <div>
-        <div>
+      <div className="main">
+        <div className="add-trip-main-container">
           <GatedContentNav />
+          <div className="trip-form-container">
+            <div className="trip-form-background" />
+            <h1>Edit Trip</h1>
+            <Form className="trip-form" onSubmit={this.onSubmitEditedTrip}>
+              <FormGroup className="form-group">
+                <div className="label-section">
+                  <Label for="tripTitle">TITLE</Label>
+                  <Tooltip
+                    title="The name of your trip"
+                    placement="right-start"
+                  >
+                    <img src={TooltipIcon} alt="tooltip icon" />
+                  </Tooltip>
+                </div>
+                <input
+                  name="title"
+                  onChange={this.handleChange}
+                  value={this.state.activeTrip.title}
+                />
+              </FormGroup>
+              <FormGroup className="form-group">
+                <div className="label-section">
+                  <Label for="tripDescription">DESCRIPTION</Label>
+                  <Tooltip
+                    title="Description of your trip and location highlights"
+                    placement="right-start"
+                  >
+                    <img src={TooltipIcon} alt="tooltip icon" />
+                  </Tooltip>
+                </div>
+                <input
+                  type="text"
+                  name="description"
+                  onChange={this.handleChange}
+                  value={this.state.activeTrip.description}
+                />
+              </FormGroup>
+              <FormGroup className="form-group">
+                <div className="label-section">
+                  <Label for="tripLocation">LOCATION</Label>
+                  <Tooltip
+                    title="Where this trip was located"
+                    placement="right-start"
+                  >
+                    <img src={TooltipIcon} alt="tooltip icon" />
+                  </Tooltip>
+                </div>
+                <input
+                  type="text"
+                  name="location"
+                  onChange={this.handleChange}
+                  value={this.state.activeTrip.location}
+                />
+              </FormGroup>
+              <FormGroup className="form-group">
+                <div className="label-section">
+                  <Label for="tripDuration">DURATION</Label>
+                  <Tooltip
+                    title="The duration of the trip (ie 7 days)"
+                    placement="right-start"
+                  >
+                    <img src={TooltipIcon} alt="tooltip icon" />
+                  </Tooltip>
+                </div>
+                <input
+                  type="text"
+                  name="duration"
+                  onChange={this.handleChange}
+                  value={this.state.activeTrip.duration}
+                />
+              </FormGroup>
+              <FormGroup className="form-group">
+                <div className="label-section">
+                  <Label for="tripDate">DATE</Label>
+                  <Tooltip
+                    title="The date of the trip (ie April 15 2019"
+                    placement="right-start"
+                  >
+                    <img src={TooltipIcon} alt="tooltip icon" />
+                  </Tooltip>
+                </div>
+                <input
+                  type="text"
+                  name="date"
+                  onChange={this.handleChange}
+                  value={this.state.activeTrip.date}
+                />
+              </FormGroup>
+              <FormGroup className="form-group">
+                <div className="label-section">
+                  <Label for="tripType">TRIP TYPE</Label>
+                  <Tooltip
+                    title="Choose between a professional trip or something you enjoyed in your own time."
+                    placement="right-start"
+                  >
+                    <img src={TooltipIcon} alt="tooltip icon" />
+                  </Tooltip>
+                </div>
+                <select
+                  name="professional"
+                  value={this.state.activeTrip.professional}
+                  onChange={this.handleChange}
+                >
+                  <option value={!this.state.professional}>Private</option>
+                  <option value={this.state.professional}>Professional</option>
+                </select>
+              </FormGroup>
+              <button>EDIT TRIP</button>
+            </Form>
+          </div>
         </div>
-        <div className="form-container">
-          <h2>Edit Trip</h2>
-          <form className="form" onSubmit={this.onSubmitEditedTrip}>
-            <input
-              name="title"
-              placeholder="title"
-              onChange={this.handleChange}
-              value={this.state.activeTrip.title}
-            />
-            <input
-              type="text"
-              name="description"
-              placeholder="trip description"
-              onChange={this.handleChange}
-              value={this.state.activeTrip.description}
-            />
-            <input
-              type="text"
-              name="location"
-              placeholder="trip location"
-              onChange={this.handleChange}
-              value={this.state.activeTrip.location}
-            />
-            <input
-              type="text"
-              name="duration"
-              placeholder="trip duration"
-              onChange={this.handleChange}
-              value={this.state.activeTrip.duration}
-            />
-            <input
-              type="text"
-              name="date"
-              placeholder="trip date"
-              onChange={this.handleChange}
-              value={this.state.activeTrip.date}
-            />
-            <select
-              name="professional"
-              value={this.state.activeTrip.professional}
-              onChange={this.handleChange}
-            >
-              <option value={this.state.private}>Private</option>
-              <option value={this.state.professional}>Professional</option>
-            </select>
-            <button>Update</button>
-          </form>
-        </div>
+        <Footer />
       </div>
     );
   }

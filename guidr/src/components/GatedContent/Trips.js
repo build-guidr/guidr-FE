@@ -27,12 +27,12 @@ class Trips extends Component {
       {
         key: "private",
         label: "Private",
-        filter: { professional: 1 }
+        filter: { professional: false }
       },
       {
         key: "professional",
         label: "Professional",
-        filter: { professional: 0 }
+        filter: { professional: true }
       }
     ];
     console.log(this);
@@ -40,9 +40,7 @@ class Trips extends Component {
 
   componentDidMount() {
     axios
-      .get(
-        `https://ls-guidr.herokuapp.com/api/trips/${this.props.match.params.id}`
-      )
+      .get("https://ls-guidr.herokuapp.com/api/trips/")
       .then(res => {
         const trips = res.data;
         console.log("Res", res.data);
