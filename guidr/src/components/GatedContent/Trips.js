@@ -27,12 +27,12 @@ class Trips extends Component {
       {
         key: "private",
         label: "Private",
-        filter: { professional: false }
+        filter: { professional: 1 }
       },
       {
         key: "professional",
         label: "Professional",
-        filter: { professional: true }
+        filter: { professional: 0 }
       }
     ];
     console.log(this);
@@ -73,41 +73,12 @@ class Trips extends Component {
 
   render() {
     AOS.init();
-    if (!this.state.trips.length)
-      return (
-        <div className="main">
-          <div className="trips-main-container">
-            <GatedContentNav />
-            <section
-              className="content-box"
-              data-aos="fade-in"
-              data-aos-anchor-placement="top-center"
-              data-aos-duration="900"
-            >
-              <h1>My Trips</h1>
-              <div className="trips-content-container">
-                <div className="get-started-content">
-                  <p>Add your first trip to your GuidR portfolio</p>
-                  <Button size="lg">
-                    <Link to="/add-trip">GET STARTED</Link>
-                  </Button>
-                </div>
-              </div>
-            </section>
-          </div>
-          <Footer />
-        </div>
-      );
+    if (!this.state.trips) return <button>Add your first trip!</button>;
     return (
       <div className="main">
         <div className="trips-main-container">
           <GatedContentNav />
-          <section
-            className="content-box"
-            data-aos="fade-up"
-            data-aos-anchor-placement="top-center"
-            data-aos-duration="900"
-          >
+          <section className="content-box" data-aos="fade-in">
             <h1>My Trips</h1>
             <div className="tabs">
               {this.tabs.map(tab => {
@@ -129,9 +100,9 @@ class Trips extends Component {
                 <div
                   className="trip-content-module"
                   key={trip.id}
-                  // data-aos="fade-up"
-                  // data-aos-anchor-placement="top-center"
-                  // data-aos-duration="900"
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="top-center"
+                  data-aos-duration="900"
                 >
                   <h2>{trip.title}</h2>
                   <p>{trip.description}</p>
