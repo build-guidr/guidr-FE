@@ -72,10 +72,27 @@
   padding: 1.5rem 7rem 1.5rem 7rem;
   font-size: 1.6rem;
   font-weight: bold;
+  border-radius: 8px;
+  color: white;
+}
+
+.form-field-section button a {
+  text-decoration: none;
+  color: white;
 }
 
 .form-field-section button:hover {
   background: #a2cd60;
+  box-shadow: 2px 2px 5px rgba(67, 67, 67, 0.6);
+}
+
+.form-field-section button:active {
+  outline: 0;
+  color: white;
+}
+
+.form-field-section button:focus {
+  outline: 0;
 }
 
 .form-field-section input:focus {

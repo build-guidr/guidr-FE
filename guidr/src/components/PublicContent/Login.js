@@ -25,7 +25,8 @@ class Login extends Component {
       .then(res => {
         console.log("LOGIN RESPONSE", res);
         localStorage.setItem("token", res.data.token);
-        this.props.history.push("/my-trips/2");
+        localStorage.setItem("user_id", res.data.id);
+        this.props.history.push(`/my-trips/${res.data.id}`);
       })
       .catch(error => {
         console.error("LOGIN ERROR", error);
@@ -71,9 +72,7 @@ class Login extends Component {
               value={this.state.password}
               onChange={this.handleInputChange}
             />
-            <Button variant="primary" size="lg">
-              LOG IN
-            </Button>
+            <button>LOG IN</button>
             <div className="create-account-link-text">
               <p>or</p>
               <Link to="/signup">Create an Account</Link>

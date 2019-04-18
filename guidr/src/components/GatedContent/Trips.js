@@ -27,12 +27,12 @@ class Trips extends Component {
       {
         key: "private",
         label: "Private",
-        filter: { professional: 1 }
+        filter: { professional: false }
       },
       {
         key: "professional",
         label: "Professional",
-        filter: { professional: 0 }
+        filter: { professional: true }
       }
     ];
     console.log(this);
@@ -73,12 +73,62 @@ class Trips extends Component {
 
   render() {
     AOS.init();
-    if (!this.state.trips) return <button>Add your first trip!</button>;
+    if (!this.state.trips.length)
+      return (
+        <div className="main">
+          <div className="trips-main-container">
+            <GatedContentNav />
+            <section
+              className="content-box"
+              data-aos="fade-in"
+              data-aos-anchor-placement="top-center"
+              data-aos-duration="900"
+            >
+              <h1>My Trips</h1>
+              <div className="trips-content-container">
+                <div className="get-started-content">
+                  <div className="get-started-sub-container">
+                    <div className="get-started-background" />
+                    <div className="get-started-sub-container-content">
+                      <p>Welcome to GuidR! </p>
+                      <ul>
+                        <div className="get-started-choices">
+                          <li>
+                            Add your first trip to your GuidR account to get
+                            started
+                          </li>
+                          <Button size="lg">
+                            <Link to="/add-trip">ADD YOUR FIRST TRIP</Link>
+                          </Button>
+                        </div>
+                        {/* <div className="get-started-choices">
+                          <li>
+                            Start building your profile to showcase you killer
+                            skills!
+                          </li>
+                          <Button size="lg">
+                            <Link to="/my-portfolio">BUILD YOUR PORTFOLIO</Link>
+                          </Button>
+                        </div> */}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <Footer />
+        </div>
+      );
     return (
       <div className="main">
         <div className="trips-main-container">
           <GatedContentNav />
-          <section className="content-box" data-aos="fade-in">
+          <section
+            className="content-box"
+            data-aos="fade-in"
+            data-aos-duration="900"
+          >
             <h1>My Trips</h1>
             <div className="tabs">
               {this.tabs.map(tab => {
@@ -97,13 +147,7 @@ class Trips extends Component {
             </div>
             <div className="trips-content-container">
               {this.state.trips.map(trip => (
-                <div
-                  className="trip-content-module"
-                  key={trip.id}
-                  data-aos="fade-up"
-                  data-aos-anchor-placement="top-center"
-                  data-aos-duration="900"
-                >
+                <div className="trip-content-module" key={trip.id}>
                   <h2>{trip.title}</h2>
                   <p>{trip.description}</p>
                   <Link to={`/trips/${trip.id}`}>
