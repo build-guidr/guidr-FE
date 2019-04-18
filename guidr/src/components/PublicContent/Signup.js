@@ -36,7 +36,7 @@ export default class Signup extends Component {
             />
 
             <Button variant="primary" size="lg">
-              <Link to="/">CREATE ACCOUNT</Link>
+              CREATE ACCOUNT
             </Button>
             <div className="create-account-link-text">
               <p>

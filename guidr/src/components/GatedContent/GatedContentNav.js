@@ -5,6 +5,7 @@ function GatedContentNav() {
   const logout = e => {
     e.preventDefault();
     localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
     window.location = "/";
   };
 
