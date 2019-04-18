@@ -92,7 +92,7 @@ class Trips extends Component {
                     <div className="get-started-sub-container-content">
                       <p>
                         Welcome to GuidR! Here's a few things you can do to get
-                        you started:{" "}
+                        started:{" "}
                       </p>
                       <ul>
                         <div className="get-started-choices">
