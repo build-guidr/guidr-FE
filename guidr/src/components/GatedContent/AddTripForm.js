@@ -19,11 +19,10 @@ class AddTripForm extends Component {
         duration: "",
         location: "",
         date: "",
-        professional: 1
+        professional: true
       },
       user_id: null,
-      private: 1,
-      professional: 0
+      professional: null
     };
   }
 
@@ -43,15 +42,13 @@ class AddTripForm extends Component {
   }
 
   addTrips = newTrip => {
-    axios
+    return axios
       .post("https://ls-guidr.herokuapp.com/api/trips/", newTrip)
       .then(res => {
         // redirect
         const trips = res.data;
-        this.setState({
-          trips: res.data
-        });
-        return this.props.history.push(`/my-trips/${this.state.user_id}`);
+
+        return trips;
       })
       .catch(err => {
         console.log(err);
@@ -73,15 +70,16 @@ class AddTripForm extends Component {
     const { user_id } = this.state;
     const trip = {
       ...this.state.trip,
-      user_id,
-      professional: 1
+      user_id
     };
-    this.addTrips(trip);
-
-    this.setState({
-      trips: [...this.state.trips, trip]
+    this.addTrips(trip).then(trips => {
+      this.setState({
+        trips: trips
+      });
+      return this.props.history.push(`/my-trips/${this.state.user_id}`);
     });
-    this.props.history.push(`/my-trips/${this.state.user_id}`);
+
+    // this.props.history.push(`/my-trips/${this.state.user_id}`);
   };
 
   render() {
@@ -218,8 +216,10 @@ class AddTripForm extends Component {
                   onChange={this.handleChange}
                   id="tripType"
                 >
-                  <option value={this.state.private}>Private</option>
-                  <option value={this.state.professional}>Professional</option>
+                  <option value={!this.state.trip.professional}>Private</option>
+                  <option value={this.state.trip.professional}>
+                    Professional
+                  </option>
                 </select>
               </FormGroup>
               <Button>ADD TRIP</Button>

@@ -72,9 +72,7 @@ class Login extends Component {
               value={this.state.password}
               onChange={this.handleInputChange}
             />
-            <Button variant="primary" size="lg">
-              LOG IN
-            </Button>
+            <button>LOG IN</button>
             <div className="create-account-link-text">
               <p>or</p>
               <Link to="/signup">Create an Account</Link>
