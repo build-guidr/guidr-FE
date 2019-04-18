@@ -44,7 +44,7 @@ class AddTripForm extends Component {
 
   addTrips = newTrip => {
     axios
-      .post("https://ls-guidr.herokuapp.com/api/trips", newTrip)
+      .post("https://ls-guidr.herokuapp.com/api/trips/", newTrip)
       .then(res => {
         console.log("printing res");
         console.log("Trips", res.data);

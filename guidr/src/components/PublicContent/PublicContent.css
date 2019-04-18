@@ -74,6 +74,11 @@
   font-weight: bold;
 }
 
+.form-field-section button a {
+  text-decoration: none;
+  color: white;
+}
+
 .form-field-section button:hover {
   background: #a2cd60;
 }

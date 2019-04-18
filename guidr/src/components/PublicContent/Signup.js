@@ -34,15 +34,13 @@ export default class Signup extends Component {
               type="password"
               placeholder="PASSWORD"
             />
+
             <Button variant="primary" size="lg">
-              CREATE ACCOUNT
+              <Link to="/">CREATE ACCOUNT</Link>
             </Button>
             <div className="create-account-link-text">
               <p>
-                Already have an account?{" "}
-                <Link exact to="/">
-                  Login
-                </Link>
+                Already have an account? <Link to="/">Login</Link>
               </p>
             </div>
           </form>
