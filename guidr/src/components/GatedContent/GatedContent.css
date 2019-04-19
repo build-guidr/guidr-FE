@@ -478,6 +478,10 @@ button.back-cta:hover {
   font-weight: bold;
 }
 
+.trip-form button:focus {
+  outline: 0;
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
