@@ -5,7 +5,7 @@ import axios from 'axios';
 import AddProfile from './AddProfile';
 import UpdateProfile from './UpdateProfile';
 import './GatedContent.css';
-// import PlacesForm from './PlacesForm'
+
 
 export default class Portfolio extends Component {
 	constructor() {
@@ -57,32 +57,31 @@ export default class Portfolio extends Component {
 			<div className="main">
 				<div className="trips-main-container">
 					<GatedContentNav />
-
 					<section data-aos="fade-in">
-						<h1>POTATO</h1>
+          <img className="img-dae" src="https://www.telltalesonline.com/wp-content/uploads/2015/05/Daenerys-Targaryen-Dragon.jpg" alt="Girl in a jacket"/>
 
 						{/* <div className="tabs"> */}
 
-						<div className="profile-content" key={user.id}>
+						<div className="user-content" key={user.id}>
 							<p>
 								{' '}
-								<strong>Guidr:</strong> {user.first_name} {user.last_name}
+								<h1 className="profile-h1">{user.first_name} {user.last_name} </h1>
 							</p>
 							<p>
 								{' '}
-								<strong>Age:</strong> {user.age}
+								<h2>Age:</h2> {user.age}
 							</p>
 							<p>
 								{' '}
-								<strong>About:</strong> {user.profile_text}
+								<h2>About:</h2> {user.profile_text}
 							</p>
 							<p>
 								{' '}
-								<strong>Certification:</strong> {user.certs}
+								<h2>Certification:</h2> {user.certs}
 							</p>
 							<p>
 								{' '}
-								<strong>Years of Experience:</strong> {user.years_of_exp}
+								<h2>Years of Experience:</h2> {user.years_of_exp}
 							</p>
 							{/* DELETE PROFILE BUTTON */}
 							{/* <button onClick={() => this.deleteUser(user.id)}>Delete Profile</button> */}
@@ -90,17 +89,16 @@ export default class Portfolio extends Component {
 							{/* <Route render={props => <AddProfile {...props} addUser={this.addUser}/>} /> */}
               {/* <Route render={(props) => <UpdateProfile {...props} updateUser={this.updateUser} />} /> */}
 							<Link to="/update-portfolio">
-								{console.log('WHAT', `/update-portfolio/updatedUser/${user.user_id}`)}
 								{/* NOT LINK TO INDIVIDUAL ID WHY???!!!!! */}
-								<button>EDIT PROFILE</button>
+								<button className="profile-button">EDIT PROFILE</button>
 							</Link>
 							
               {/* <Route render={(props) => <PlacesForm {...props}  />} /> */}
-						</div>
-						{/* </div> */}
-					</section>
-				</div>
-			</div>
+						</div>	
+            </section>
+					</div>
+	    </div>
+      
 		);
 	}
 }

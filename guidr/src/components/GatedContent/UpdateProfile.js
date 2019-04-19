@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom'
+import { Route } from "react-router-dom";
 import axios from "axios";
 import "./GatedContent.css";
 import GatedContentNav from "./GatedContentNav";
+import UpdateModal from "./UpdateModal";
+
+// import { Button } from "reactstrap";
+// import AOS from "aos";
+// import "aos/dist/aos.css";
 
 class UpdateProfile extends Component {
   constructor() {
@@ -64,25 +70,31 @@ class UpdateProfile extends Component {
   onSubmitEditedUser = e => {
     e.preventDefault();
     this.updateUser(this.state.user);
+    alert("YOU DID IT!!!!")
     this.setState({
       state: ''
     });
   };
 
+
+
+  
   render() {
     return (
       <div className="main">
         <div className="trips-main-container">
          <GatedContentNav />
-         <section data-aos="fade-in">
-          <h2>Update Profile</h2>
+         {/* <section className="trip-card" data-aos="fade-in"> */}
+         {/* <div className="trip-content-container"> */}
+        {/* <div className="get-started-content">
+        <div className="get-started-sub-container"> */}
           {/* {this.state.user.map(user => ( */}
-            <div className="profile-content">
-              <p> <strong>Guidr:</strong> {this.state.user.first_name} {this.state.user.last_name}</p>
-              <p> <strong>Age:</strong> {this.state.user.age}</p>
-              <p> <strong>About:</strong> {this.state.user.profile_text}</p>
-              <p> <strong>Certification:</strong> {this.state.user.certs}</p>              
-              <p> <strong>Years of Experience:</strong> {this.state.user.years_of_exp}</p>
+            <div className="update-content">
+              <p> <h2>Guidr:</h2> {this.state.user.first_name} {this.state.user.last_name}</p>
+              <p> <h2>Age:</h2> {this.state.user.age}</p>
+              <p> <h2>About:</h2> {this.state.user.profile_text}</p>
+              <p> <h2>Certification:</h2> {this.state.user.certs}</p>              
+              <p> <h2>Years of Experience:</h2> {this.state.user.years_of_exp}</p>
             
 
           <div className="tabs">
@@ -127,15 +139,20 @@ class UpdateProfile extends Component {
               onChange={this.handleChange}
               value={this.state.user.years_of_exp}
             />
-           <button onClick={this.updateProfile}>SUBMIT CHANGES</button>
+            {/* <Route render={(props) => <UpdateModal {...props}  />} /> */}
+           <button onClick={this.updateUser} className="update-button"> SUBMIT </button>
+           
           </form>
           </div> 
-          
-        </div></section></div>
+          </div>
+         {/* </div> */}
+         {/* </section> */}
+         </div>
       </div>
     );
   }
 }
+
 
 export default UpdateProfile;
 
