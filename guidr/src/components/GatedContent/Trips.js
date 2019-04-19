@@ -81,8 +81,8 @@ class Trips extends Component {
             <section
               className="content-box"
               data-aos="fade-in"
-              data-aos-anchor-placement="top-center"
-              data-aos-duration="900"
+              // data-aos-anchor-placement="top-center"
+              // data-aos-duration="900"
             >
               <h1>My Trips</h1>
               <div className="trips-content-container">

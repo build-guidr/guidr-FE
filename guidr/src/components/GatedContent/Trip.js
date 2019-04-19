@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import GatedContentNav from "./GatedContentNav";
 import Footer from "./Footer";
 import "./GatedContent.css";
@@ -68,6 +68,13 @@ export default class Trip extends Component {
     this.deleteTrips(this.state.trip.id);
   };
 
+  logout = e => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
+    window.location = "/";
+  };
+
   render() {
     AOS.init();
     // console.log("All mah trips: ", this.state.trips);
@@ -76,6 +83,7 @@ export default class Trip extends Component {
     console.log(this.state.trip);
     return (
       <div className="main">
+        <div className="main-trip-background" />
         <div className="trip-main-container">
           <GatedContentNav />
           <div className="trip-card" data-aos="fade-in">

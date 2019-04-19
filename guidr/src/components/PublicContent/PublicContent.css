@@ -99,6 +99,25 @@
   outline: 0;
 }
 
+/* Login Experience Nav styling in PublicContentNav.js */
+
+.social-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 30%;
+  margin-top: 5rem;
+  margin-left: 5rem;
+}
+
+.social-icons img {
+  width: 35px;
+  height: 35px;
+}
+
+.social-icons img:hover {
+  cursor: pointer;
+}
 .public-content-header-container {
   display: flex;
   flex-direction: column;
@@ -117,9 +136,9 @@
   width: 85%;
 }
 
-.public-content-nav img {
-  height: 88px;
-  width: 110px;
+.logo {
+  height: 112px;
+  width: 140px;
 }
 
 .nav-link {
@@ -147,7 +166,7 @@
 }
 
 .public-content-header-text h1 {
-  font-size: 6rem;
+  font-size: 4rem;
   color: #1d92b8;
 }
 
@@ -157,7 +176,7 @@
 } */
 
 .public-content-header-text h3 {
-  font-size: 3rem;
+  font-size: 2.4rem;
   color: #2f454e;
 }
 
@@ -179,7 +198,7 @@
 .create-account-link-text {
   font-size: 1.6rem;
   text-align: center;
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
 }
 
 .create-account-link-text a {
