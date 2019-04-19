@@ -18,6 +18,10 @@ export default class GatedContentNav extends Component {
           &nbsp;|&nbsp;
           <NavLink to="/my-portfolio">My Portfolio</NavLink>
           &nbsp;|&nbsp;
+          {/* <NavLink to="/add-portfolio">Add Portfolio</NavLink>
+          &nbsp;|&nbsp; */}
+          <NavLink to="/update-portfolio">Update Portfolio</NavLink>
+          &nbsp;|&nbsp;
           <button onClick={this.logout}>Logout</button>
         </nav>
       </div>

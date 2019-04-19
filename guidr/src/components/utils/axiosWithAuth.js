@@ -5,7 +5,7 @@ axios.defaults.baseURL = "https://ls-guidr.herokuapp.com/";
 
 axios.interceptors.request.use(function(requestConfig) {
   const token = localStorage.getItem("token");
-  requestConfig.headers.authorization = token;
+  requestConfig.headers.Authorization = token;
   return requestConfig;
 });
 
