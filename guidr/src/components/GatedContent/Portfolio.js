@@ -9,6 +9,7 @@ import { Button } from "reactstrap";
 // import PlacesForm from './PlacesForm'
 import Footer from "./Footer";
 import Loader from "react-loader-spinner";
+import Dae from "./img/Daenerys-Targaryen-Dragon.jpg";
 
 export default class Portfolio extends Component {
   constructor() {
@@ -108,30 +109,25 @@ export default class Portfolio extends Component {
           <div className="main">
             <div className="trips-main-container">
               <GatedContentNav />
-              <section>
-                <h1>My Portfolio</h1>
-                <div className="profile-content" key={this.state.user.id}>
+              <section className="content-box">
+                <img className="img-dae" src={Dae} alt="Girl in a jacket" />
+                <div className="user-content" key={this.state.user.id}>
                   <p>
-                    {" "}
-                    <strong>Guidr:</strong> {this.state.user.first_name}{" "}
-                    {this.state.user.last_name}
+                    <h1 className="profile-h1">
+                      {this.state.user.first_name} {this.state.user.last_name}{" "}
+                    </h1>
                   </p>
                   <p>
-                    {" "}
-                    <strong>Age:</strong> {this.state.user.age}
+                    <h2>Age:</h2> {this.state.user.age}
                   </p>
                   <p>
-                    {" "}
-                    <strong>About:</strong> {this.state.user.profile_text}
+                    <h2>About:</h2> {this.state.user.profile_text}
                   </p>
                   <p>
-                    {" "}
-                    <strong>Certification:</strong> {this.state.user.certs}
+                    <h2>Certification:</h2> {this.state.user.certs}
                   </p>
                   <p>
-                    {" "}
-                    <strong>Years of Experience:</strong>{" "}
-                    {this.state.user.years_of_exp}
+                    <h2>Years of Experience:</h2> {this.state.user.years_of_exp}
                   </p>
                   {/* DELETE PROFILE BUTTON */}
                   {/* <button onClick={() => this.deleteUser(this.state.user.id)}>Delete Profile</button> */}
@@ -139,12 +135,7 @@ export default class Portfolio extends Component {
                   {/* <Route render={props => <AddProfile {...props} addUser={this.addUser}/>} /> */}
                   {/* <Route render={(props) => <UpdateProfile {...props} updateUser={this.updateUser} />} /> */}
                   <Link to="/update-portfolio">
-                    {console.log(
-                      "WHAT",
-                      `/update-portfolio/updatedUser/${this.state.user.user_id}`
-                    )}
-                    {/* NOT LINK TO INDIVIDUAL ID WHY???!!!!! */}
-                    <button>EDIT PROFILE</button>
+                    <button className="profile-button">EDIT PROFILE</button>
                   </Link>
 
                   {/* <Route render={(props) => <PlacesForm {...props}  />} /> */}
