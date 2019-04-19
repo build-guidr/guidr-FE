@@ -16,6 +16,7 @@ function GatedContentNav() {
       </NavLink>
       <nav className="gated-content-nav">
         <NavLink to="/my-portfolio">PORTFOLIO</NavLink>
+        {/* <NavLink to="/update-portfolio">ADD PORTFOLIO</NavLink> */}
         <NavLink to={`/my-trips/${localStorage.getItem("user_id")}`}>
           TRIPS
         </NavLink>
