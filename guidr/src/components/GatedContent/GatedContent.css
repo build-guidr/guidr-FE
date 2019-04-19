@@ -635,7 +635,7 @@ footer p {
   display: inline-block;
   box-shadow: 2px 2px 6px rgba(67, 67, 67, 0.6);
   background: white;
-  max-height: 600px;
+  max-height: 700px;
   max-width: 50%;
   position: relative;
   z-index: 1;
@@ -671,6 +671,10 @@ footer p {
   text-align: left;
 }
 
+.user-content p {
+  padding-top: 2rem;
+}
+
 .user-content p h2 {
   color: #1a90b7;
   font-weight: bold;
@@ -679,6 +683,10 @@ footer p {
 .update-content {
   margin-left: 3rem;
   text-align: left;
+}
+
+.update-content p {
+  padding-top: 2rem;
 }
 
 .update-content p h2 {
@@ -707,6 +715,7 @@ footer p {
   border: none;
   border-radius: 15px;
   box-shadow: 0 5px #999;
+  margin-top: 1.5rem;
 }
 
 .update-button {
