@@ -548,7 +548,7 @@ footer {
   width: 40%;
   justify-content: space-around;
   padding-left: 10rem;
-  margin-left: 17rem;
+  margin-left: 22rem;
   height: 3rem;
 }
 
@@ -576,7 +576,7 @@ footer {
 }
 
 .gated-social-icons {
-  padding-left: 1rem;
+  margin-right: 3rem;
 }
 
 .gated-social-icons img {
@@ -589,8 +589,26 @@ footer {
 
 footer p {
   padding-left: 10rem;
-  margin-left: 18rem;
+  margin-left: 23.7rem;
   margin-top: 2rem;
   font-size: 1.6rem;
   color: white;
+}
+
+/* Portfolio.js Styling */
+
+.loader-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-content {
+  padding: 5rem;
+}
+
+.profile-content input:focus {
+  outline: 0;
 }

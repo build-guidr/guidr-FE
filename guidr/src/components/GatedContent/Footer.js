@@ -18,7 +18,9 @@ function Footer() {
           <nav className="gated-content-footer-nav">
             <h2>GuidR</h2>
             <NavLink to="/my-portfolio">PORTFOLIO</NavLink>
-            <NavLink to="/my-trips">TRIPS</NavLink>
+            <NavLink to={`/my-trips/${localStorage.getItem("user_id")}`}>
+              TRIPS
+            </NavLink>
             <NavLink to="/add-trip">ADD TRIP</NavLink>
             <NavLink exact to="/" onClick={logout}>
               LOGOUT

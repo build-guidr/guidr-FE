@@ -8,6 +8,8 @@ import {
   withRouter
 } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import UpdateProfile from "./components/GatedContent/UpdateProfile";
+// import AddProfile from "./components/GatedContent/AddProfile";
 import axios from "axios";
 
 import "./App.css";
@@ -33,6 +35,8 @@ class App extends Component {
           <Route exact path="/" render={props => <Login {...props} />} />
           <PrivateRoute path="/my-trips/:id" component={Trips} />
           <PrivateRoute path="/my-portfolio" component={Portfolio} />
+          {/* <Route path="/add-portfolio" component={AddProfile} /> */}
+          <Route path="/update-portfolio" component={UpdateProfile} />
           <PrivateRoute path="/edit-trip/:id" component={EditTripForm} />
           <PrivateRoute path="/add-trip" component={AddTripForm} />
           <PrivateRoute path="/trips/:id" component={Trip} />
