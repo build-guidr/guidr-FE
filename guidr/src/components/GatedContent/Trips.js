@@ -73,7 +73,7 @@ class Trips extends Component {
 
   render() {
     AOS.init();
-    if (!this.state.length)
+    if (!this.state.trips.length)
       return (
         <div className="main">
           <div className="trips-main-container">
