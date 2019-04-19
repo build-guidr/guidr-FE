@@ -73,7 +73,7 @@ class Trips extends Component {
 
   render() {
     AOS.init();
-    if (!this.state.trips.length)
+    if (!this.state.length)
       return (
         <div className="main">
           <div className="trips-main-container">
@@ -150,6 +150,12 @@ class Trips extends Component {
                 <div className="trip-content-module" key={trip.id}>
                   <h2>{trip.title}</h2>
                   <p>{trip.description}</p>
+                  <p>
+                    Trip Type:
+                    {` ${
+                      trip.professional === true ? "Professional" : "Private"
+                    }`}
+                  </p>
                   <Link to={`/trips/${trip.id}`}>
                     <Button size="md">DETAILS</Button>
                   </Link>

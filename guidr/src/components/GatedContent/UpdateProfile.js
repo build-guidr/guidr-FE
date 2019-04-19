@@ -4,6 +4,7 @@ import axios from "axios";
 import "./GatedContent.css";
 import GatedContentNav from "./GatedContentNav";
 import Footer from "./Footer";
+// import UpdateModal from "./UpdateModal";
 
 class UpdateProfile extends Component {
   constructor() {
@@ -75,34 +76,29 @@ class UpdateProfile extends Component {
       <div className="main">
         <div className="trips-main-container">
           <GatedContentNav />
-          <section>
+          {/* <section> */}
+          <section className="content-box-update-profile">
             <h1>Update Profile</h1>
-            {/* {this.state.user.map(user => ( */}
-            <div className="profile-content">
-              <p>
-                {" "}
-                <strong>Guidr:</strong> {this.state.user.first_name}{" "}
-                {this.state.user.last_name}
-              </p>
-              <p>
-                {" "}
-                <strong>Age:</strong> {this.state.user.age}
-              </p>
-              <p>
-                {" "}
-                <strong>About:</strong> {this.state.user.profile_text}
-              </p>
-              <p>
-                {" "}
-                <strong>Certification:</strong> {this.state.user.certs}
-              </p>
-              <p>
-                {" "}
-                <strong>Years of Experience:</strong>{" "}
-                {this.state.user.years_of_exp}
-              </p>
-
-              <div className="tabs">
+            <div className="updated-content-display">
+              <div className="update-content">
+                <p>
+                  <h2>Guidr:</h2> {this.state.user.first_name}
+                  {this.state.user.last_name}
+                </p>
+                <p>
+                  <h2>Age:</h2> {this.state.user.age}
+                </p>
+                <p>
+                  <h2>About:</h2> {this.state.user.profile_text}
+                </p>
+                <p>
+                  <h2>Certification:</h2> {this.state.user.certs}
+                </p>
+                <p>
+                  <h2>Years of Experience:</h2> {this.state.user.years_of_exp}
+                </p>
+              </div>
+              <div className="tabs-update-content">
                 <form className="form" onSubmit={this.onSubmitEditedUser}>
                   <input
                     name="first_name"
@@ -144,7 +140,12 @@ class UpdateProfile extends Component {
                     onChange={this.handleChange}
                     value={this.state.user.years_of_exp}
                   />
-                  <button onClick={this.updateProfile}>SUBMIT CHANGES</button>
+                  <button
+                    onClick={this.updateProfile}
+                    className="update-button"
+                  >
+                    SUBMIT CHANGES
+                  </button>
                 </form>
               </div>
             </div>
